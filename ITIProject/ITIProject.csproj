@@ -44,6 +44,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -173,7 +201,61 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009301518556_update-Setup4.cs" />
+    <Compile Include="Migrations\202009301518556_update-Setup4.Designer.cs">
+      <DependentUpon>202009301518556_update-Setup4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009301540242_update-Setup4_addStudent.cs" />
+    <Compile Include="Migrations\202009301540242_update-Setup4_addStudent.Designer.cs">
+      <DependentUpon>202009301540242_update-Setup4_addStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009301541553_update-Setup4_addStudent1.cs" />
+    <Compile Include="Migrations\202009301541553_update-Setup4_addStudent1.Designer.cs">
+      <DependentUpon>202009301541553_update-Setup4_addStudent1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009301616565_update-Setup4_addStudent2.cs" />
+    <Compile Include="Migrations\202009301616565_update-Setup4_addStudent2.Designer.cs">
+      <DependentUpon>202009301616565_update-Setup4_addStudent2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009301628359_update-Setup4_addStudent3.cs" />
+    <Compile Include="Migrations\202009301628359_update-Setup4_addStudent3.Designer.cs">
+      <DependentUpon>202009301628359_update-Setup4_addStudent3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009301639007_update-Setup4_addStudent4.cs" />
+    <Compile Include="Migrations\202009301639007_update-Setup4_addStudent4.Designer.cs">
+      <DependentUpon>202009301639007_update-Setup4_addStudent4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009301640128_update-Setup4_addStudent5.cs" />
+    <Compile Include="Migrations\202009301640128_update-Setup4_addStudent5.Designer.cs">
+      <DependentUpon>202009301640128_update-Setup4_addStudent5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009301727141_update-Setup4_addCourse1.cs" />
+    <Compile Include="Migrations\202009301727141_update-Setup4_addCourse1.Designer.cs">
+      <DependentUpon>202009301727141_update-Setup4_addCourse1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009301728398_update-Setup4_addCourse2.cs" />
+    <Compile Include="Migrations\202009301728398_update-Setup4_addCourse2.Designer.cs">
+      <DependentUpon>202009301728398_update-Setup4_addCourse2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009301736220_update-Setup4_addCourse3.cs" />
+    <Compile Include="Migrations\202009301736220_update-Setup4_addCourse3.Designer.cs">
+      <DependentUpon>202009301736220_update-Setup4_addCourse3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009301740237_update-Setup4_addCourse4.cs" />
+    <Compile Include="Migrations\202009301740237_update-Setup4_addCourse4.Designer.cs">
+      <DependentUpon>202009301740237_update-Setup4_addCourse4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009301747293_update-Setup4_addCourse5.cs" />
+    <Compile Include="Migrations\202009301747293_update-Setup4_addCourse5.Designer.cs">
+      <DependentUpon>202009301747293_update-Setup4_addCourse5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DBFiles\Cource.cs" />
+    <Compile Include="Models\DBFiles\Department.cs" />
+    <Compile Include="Models\DBFiles\Professor.cs" />
+    <Compile Include="Models\DBFiles\Student.cs" />
+    <Compile Include="Models\DBFiles\Students_Cources.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -186,8 +268,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -245,6 +332,44 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202009301518556_update-Setup4.resx">
+      <DependentUpon>202009301518556_update-Setup4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009301540242_update-Setup4_addStudent.resx">
+      <DependentUpon>202009301540242_update-Setup4_addStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009301541553_update-Setup4_addStudent1.resx">
+      <DependentUpon>202009301541553_update-Setup4_addStudent1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009301616565_update-Setup4_addStudent2.resx">
+      <DependentUpon>202009301616565_update-Setup4_addStudent2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009301628359_update-Setup4_addStudent3.resx">
+      <DependentUpon>202009301628359_update-Setup4_addStudent3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009301639007_update-Setup4_addStudent4.resx">
+      <DependentUpon>202009301639007_update-Setup4_addStudent4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009301640128_update-Setup4_addStudent5.resx">
+      <DependentUpon>202009301640128_update-Setup4_addStudent5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009301727141_update-Setup4_addCourse1.resx">
+      <DependentUpon>202009301727141_update-Setup4_addCourse1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009301728398_update-Setup4_addCourse2.resx">
+      <DependentUpon>202009301728398_update-Setup4_addCourse2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009301736220_update-Setup4_addCourse3.resx">
+      <DependentUpon>202009301736220_update-Setup4_addCourse3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009301740237_update-Setup4_addCourse4.resx">
+      <DependentUpon>202009301740237_update-Setup4_addCourse4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009301747293_update-Setup4_addCourse5.resx">
+      <DependentUpon>202009301747293_update-Setup4_addCourse5.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

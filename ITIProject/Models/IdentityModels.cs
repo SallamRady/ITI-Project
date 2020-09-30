@@ -3,6 +3,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using ITIProject.Models.DBFiles;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace ITIProject.Models
 {
@@ -21,13 +23,21 @@ namespace ITIProject.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("name =ITIProjectDB", throwIfV1Schema: false)
         {
         }
+
+        //Tables.....
+        public DbSet<Department> Deparments { get; set; }
+        public DbSet<Professor> Professors { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Cource> Courses { get; set; }
+        public DbSet<Students_Cources> Students_Cources { get; set; }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+       
     }
 }
