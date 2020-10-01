@@ -1,0 +1,31 @@
+﻿@{ 
+    ViewBag.Title = "Dashboard Home";
+}
+<!DOCTYPE html>
+<html>
+@Html.Partial("_Head")
+<body class="theme-red">
+
+    @Html.Partial("_Navbar")
+
+    @Html.Partial("_Sidbar")
+
+    <section class="content">
+        <div class="container-fluid">
+
+            <!-- Title -->
+            <div class="block-header">
+                <h2>DASHBOARD</h2>
+            </div>
+            <!-- # Title -->
+
+            <!-- Content -->
+            @RenderBody()
+            <!-- Content -->
+
+        </div>
+    </section>
+
+    @Html.Partial("_coreFiles")         
+</body>
+</html>
