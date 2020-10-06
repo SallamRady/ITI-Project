@@ -18,6 +18,7 @@ namespace ITIProject.Models.DBFiles
 
         // Name.
         [Required]
+        [DataType(DataType.Text)]
         [Display(Name = "Student Name")]
         [RegularExpression(@"[a-zA-Z]+", ErrorMessage = "The Name accept only characters.")]
         [StringLength(100, ErrorMessage = "Name length can't be more than 100 char..")]
@@ -25,6 +26,7 @@ namespace ITIProject.Models.DBFiles
 
         // City.
         [Required]
+        [DataType(DataType.Text)]
         [Display(Name = "Student City")]
         [StringLength(50, ErrorMessage = "Name length can't be more than 50 char..")]
         public string City { get; set; }
@@ -32,7 +34,7 @@ namespace ITIProject.Models.DBFiles
 
         // Level.
         [Required]
-        [Range(1,4)] 
+        [Range(1,4)]
         [Display(Name = "Student Level")]
         public int Level { get; set; }
 

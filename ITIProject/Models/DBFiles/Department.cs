@@ -35,7 +35,7 @@ namespace ITIProject.Models.DBFiles
         //Manager ID 'Professor_id' - Foregin Key
         //1-1 Department has one Manager
         [ForeignKey("Professor")]
-        public int Manager_ID { get; set; }
+        public int? Manager_ID { get; set; }
         public virtual Professor Professor { get; set; }
         /******************  End  Relation Department:Professor(Manger) *************/
 

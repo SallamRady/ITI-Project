@@ -1,0 +1,142 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<ITIProject.Models.DBFiles.Student>
+
+@{
+    ViewBag.Title = "Student Management";
+}
+<div class="card table-responsive">
+    <div class="header">
+        <div style="display:inline-block">
+            <h2>Student Management</h2>
+            <small>you can edit-delete-update any columns except header/footer.</small>
+        </div>
+        <a class="btn btn-primary" href="/Dashboard/Students/Create" style="float:right">Create New Student</a>
+    </div>
+    <br/>
+    <!-- Form For Search -->
+    <form action="/Dashboard/Students/Index" method="get">
+        <b> Search Option : </b>
+        <select name="searchBy" style="padding:5px;margin:2px">
+            <option value="Name">Name</option>
+            <option value="City">City</option>
+            <option value="Department">Department</option>
+        </select>
+        <input type="text" name="SearchKeyWord" placeholder="Search....." style="padding:5px"/>
+        <input type="submit" name="submit" value="Search"  style="padding:5px" />
+    </form>
+    <hr/>
+    <div class="body-content" style="margin:3px">
+        <table id="mainTable" class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Department.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Professor.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Level)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().BirthYear)
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if(Model.Count() == 0)
+                {
+                    <tr>
+                        <th colspan="7" style="color:red">There are no rows</th>
+                    </tr>
+                }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Department.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Professor.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.City)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Level)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BirthYear)
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" 
+                               href="/Dashboard/Students/Edit/@item.ID" 
+                               title="Edit"
+                               style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;" >
+                                 <span class="material-icons" >edit</span>
+                            </a> |
+                            <a class="btn btn-info"
+                               href="/Dashboard/Students/Details/@item.ID"
+                               title="Details"
+                               style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                <span class="material-icons">visibility</span>
+                            </a> |
+                            <a class="btn btn-danger"
+                               href="/Dashboard/Students/Delete/@item.ID"
+                               title="Delete"
+                               style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                <span class="material-icons">delete</span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Department.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Professor.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Level)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().BirthYear)
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+        @Html.PagedListPager(Model, pageNumber => Url.Action("Index",new {
+           pageNumber,
+           searchBy = Request.QueryString["searchBy"],
+           SearchKeyWord = Request.QueryString["SearchKeyWord"],
+           pageSize = 10
+           }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })
+    </div>
+</div>
+

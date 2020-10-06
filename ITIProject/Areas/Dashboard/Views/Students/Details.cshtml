@@ -1,0 +1,85 @@
+﻿@model ITIProject.Models.DBFiles.Student
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Student Details</h2>
+
+<div>
+    <hr />
+    <div class="dl-horizontal">
+        <div class="row">
+            <div class="col-md-3">
+                    @Html.DisplayNameFor(model => model.Department.Name)  
+            </div>
+            <div class="col-md-9">
+                    @Html.DisplayFor(model => model.Department.Name)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+               @Html.DisplayNameFor(model => model.Professor.Name)
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Professor.Name)
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Name)
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.City)
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.City)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Level)
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Level)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+               @Html.DisplayNameFor(model => model.BirthYear)
+            </div>
+            <div class="col-md-9 ">
+               @Html.DisplayFor(model => model.BirthYear)
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+<p>
+    <a class="btn btn-info"
+       href="/Dashboard/Students/Edit/@Model.ID"
+       title="Edit"
+       style="cursor:pointer;max-height: 35px;text-align: center;">
+        <span class="material-icons">edit</span>
+        <b>Edit</b>
+    </a>
+
+    <a class="btn btn-info"
+       href="/Dashboard/Students/Index"
+       title="Edit"
+       style="cursor:pointer;max-height: 35px;text-align: center;">
+        <span class="material-icons">list</span>
+        <b>Back to List</b>
+    </a>
+</p>
