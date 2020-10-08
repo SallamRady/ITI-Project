@@ -204,8 +204,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Dashboard\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\RolesController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\StudentsController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
+    <Compile Include="Areas\Dashboard\ViewModels\Role.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -264,6 +266,22 @@
     <Compile Include="Migrations\202010051432024_update-file105.Designer.cs">
       <DependentUpon>202010051432024_update-file105.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010061647225_update-addRoles.cs" />
+    <Compile Include="Migrations\202010061647225_update-addRoles.Designer.cs">
+      <DependentUpon>202010061647225_update-addRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010071021092_update-addimage1.cs" />
+    <Compile Include="Migrations\202010071021092_update-addimage1.Designer.cs">
+      <DependentUpon>202010071021092_update-addimage1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010072213492_update-roles_Sallam.cs" />
+    <Compile Include="Migrations\202010072213492_update-roles_Sallam.Designer.cs">
+      <DependentUpon>202010072213492_update-roles_Sallam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010072323519_update-roles_Sallam_2.cs" />
+    <Compile Include="Migrations\202010072323519_update-roles_Sallam_2.Designer.cs">
+      <DependentUpon>202010072323519_update-roles_Sallam_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DBFiles\Cource.cs" />
@@ -271,6 +289,8 @@
     <Compile Include="Models\DBFiles\Professor.cs" />
     <Compile Include="Models\DBFiles\Student.cs" />
     <Compile Include="Models\DBFiles\Students_Cources.cs" />
+    <Compile Include="Models\DBFiles\UniqueAttribute.cs" />
+    <Compile Include="Models\DBFiles\UniqueProfessorEmailAttribute.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -279,6 +299,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\default.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -304,6 +325,13 @@
     <Content Include="Areas\Dashboard\Views\Students\Details.cshtml" />
     <Content Include="Areas\Dashboard\Views\Students\Edit.cshtml" />
     <Content Include="Areas\Dashboard\Views\Students\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Roles\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Roles\Details.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Roles\Create.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Roles\Edit.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Roles\Delete.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Home\Login.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Shared\_Login_Layout.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -357,7 +385,6 @@
     <Folder Include="Areas\Dashboard\Content\images\" />
     <Folder Include="Areas\Dashboard\Content\js\" />
     <Folder Include="Areas\Dashboard\Content\plugins\" />
-    <Folder Include="Areas\Dashboard\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -406,6 +433,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010051432024_update-file105.resx">
       <DependentUpon>202010051432024_update-file105.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010061647225_update-addRoles.resx">
+      <DependentUpon>202010061647225_update-addRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010071021092_update-addimage1.resx">
+      <DependentUpon>202010071021092_update-addimage1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010072213492_update-roles_Sallam.resx">
+      <DependentUpon>202010072213492_update-roles_Sallam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010072323519_update-roles_Sallam_2.resx">
+      <DependentUpon>202010072323519_update-roles_Sallam_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

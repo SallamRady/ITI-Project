@@ -17,10 +17,17 @@ namespace ITIProject.Models.DBFiles
 
         // Name.
         [Required]
-        [Display(Name = "Professor Name")]
+        [Display(Name = "User Name")]
         [RegularExpression(@"[a-zA-Z]+", ErrorMessage = "The Name accept only characters.")]
         [StringLength(100, ErrorMessage = "Name length can't be more than 100 char..")]
         public string Name { get; set; }
+
+        // Email.
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [UniqueProfessorEmail]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         // City.
         [Required]
@@ -34,6 +41,9 @@ namespace ITIProject.Models.DBFiles
         [Display(Name = "Professor Salary")]
         public double Salary { get; set; }
 
+        [Required]
+        [Display(Name = "Group")]
+        public string Roles { get; set; } = "Professors";
 
         /************************** Start The Relations *******************************/
 

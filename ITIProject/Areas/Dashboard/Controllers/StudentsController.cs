@@ -9,9 +9,14 @@ using System.Web.Mvc;
 using ITIProject.Models;
 using ITIProject.Models.DBFiles;
 using PagedList;
+using System.IO;
+using Microsoft.AspNet.Identity;
+using System.Data.Entity.Infrastructure;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ITIProject.Areas.Dashboard.Controllers
 {
+    [Authorize(Roles ="Admins,Managers,Professors")]
     public class StudentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -66,20 +71,51 @@ namespace ITIProject.Areas.Dashboard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,City,Level,BirthYear,Student_Department_ID,Student_Professor_supervisior_ID")] Student student)
+        public ActionResult Create([Bind(Include = "ID,Name,Email,City,Image,Level,BirthYear,Student_Department_ID,Student_Professor_supervisior_ID")] Student student,HttpPostedFile ImageFile)
         {
+            //return Content(ImageFile.FileName);
+            //manage Images... :)
+            //if(!string.IsNullOrEmpty(ImageFile.FileName))
+            //{
+            //    string fileName  = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+            //    fileName += DateTime.Now.ToString("yymmssfff");
+            //    string extention = Path.GetExtension(ImageFile.FileName);
+            //    fileName = fileName + extention;
+            //    student.Image = "~/Content/Images/" + fileName;
+            //    fileName = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+            //    ImageFile.SaveAs(fileName);
+            //}
+            //else
+            //{
+            //    student.Image = "~/Content/Images/default.png";
+            //}
+            
             if (ModelState.IsValid)
             {
+                student.Image = "~/Content/Images/default.png";
                 db.Students.Add(student);
                 db.SaveChanges();
+                CreateUser(student.Name, student.Email);
                 return RedirectToAction("Index");
             }
-
+            
             ViewBag.Student_Department_ID = new SelectList(db.Deparments, "ID", "Name", student.Student_Department_ID);
             ViewBag.Student_Professor_supervisior_ID = new SelectList(db.Professors, "ID", "Name", student.Student_Professor_supervisior_ID);
             return View(student);
         }
 
+        private void CreateUser(string name,string email)
+        {
+            UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            ApplicationUser user = new ApplicationUser();
+            user.UserName = name;
+            user.Email = email;
+            var check = userManager.Create(user, "#Sallam@501#");
+            if (check.Succeeded)
+            {
+                userManager.AddToRole(user.Id, "Students");
+            }
+        }
         // GET: Dashboard/Students/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -102,7 +138,7 @@ namespace ITIProject.Areas.Dashboard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,City,Level,BirthYear,Student_Department_ID,Student_Professor_supervisior_ID")] Student student)
+        public ActionResult Edit([Bind(Include = "ID,Name,Email,City,Level,BirthYear,Student_Department_ID,Student_Professor_supervisior_ID")] Student student)
         {
             if (ModelState.IsValid)
             {

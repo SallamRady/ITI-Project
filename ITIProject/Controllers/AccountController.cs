@@ -17,6 +17,7 @@ namespace ITIProject.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        ApplicationDbContext db = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -66,20 +67,26 @@ namespace ITIProject.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl,string dashboard)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                if (Request.Url.AbsoluteUri.Contains("Dashboard") || (!string.IsNullOrEmpty(dashboard) && dashboard.Contains("Dashboard")))
+                {
+                    return RedirectToAction("Login", "Dashboard/Home");
+                }else {
+                    return View(model);
+                }
+                
             }
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToLocal(returnUrl,dashboard);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -87,7 +94,14 @@ namespace ITIProject.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    if (Request.Url.AbsoluteUri.Contains("Dashboard") || (!string.IsNullOrEmpty(dashboard) && dashboard.Contains("Dashboard")))
+                    {
+                        return RedirectToAction("Login", "Dashboard/Home",model);
+                    }
+                    else
+                    {
+                        return View(model);
+                    }   
             }
         }
 
@@ -139,6 +153,7 @@ namespace ITIProject.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Roles = new SelectList(db.Roles.ToList(), "Name", "Name");
             return View();
         }
 
@@ -151,20 +166,21 @@ namespace ITIProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                    await this.UserManager.AddToRoleAsync(user.Id, model.Roles);
                     return RedirectToAction("Index", "Home");
                 }
+                ViewBag.Roles = new SelectList(db.Roles.ToList(), "Name", "Name");
                 AddErrors(result);
             }
 
@@ -443,13 +459,20 @@ namespace ITIProject.Controllers
             }
         }
 
-        private ActionResult RedirectToLocal(string returnUrl)
+        private ActionResult RedirectToLocal(string returnUrl,string dashboard = "test")
         {
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
             }
+            var DashboardKeyWord = "Dashboard";
+
+            if (Request.Url.AbsoluteUri.Contains(DashboardKeyWord) || (!string.IsNullOrEmpty(dashboard) && dashboard.Contains(DashboardKeyWord)))
+            {
+                return RedirectToAction("Index", "Dashboard/Home");
+            }
             return RedirectToAction("Index", "Home");
+            return Content("Not Has Dashboard Word in url");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

@@ -13,7 +13,7 @@ namespace ITIProject.Models.DBFiles
         // ID.
         [Required]
         [Key]
-        [Display(Name = "Student ID")]
+        [Display(Name = "User ID")]
         public int ID { get; set; }
 
         // Name.
@@ -24,10 +24,17 @@ namespace ITIProject.Models.DBFiles
         [StringLength(100, ErrorMessage = "Name length can't be more than 100 char..")]
         public string Name { get; set; }
 
+        // Email.
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [UniqueStudentEmail]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
         // City.
         [Required]
         [DataType(DataType.Text)]
-        [Display(Name = "Student City")]
+        [Display(Name = "City")]
         [StringLength(50, ErrorMessage = "Name length can't be more than 50 char..")]
         public string City { get; set; }
 
@@ -35,13 +42,20 @@ namespace ITIProject.Models.DBFiles
         // Level.
         [Required]
         [Range(1,4)]
-        [Display(Name = "Student Level")]
+        [Display(Name = "Level")]
         public int Level { get; set; }
+
+        //Image..
+        public string Image { get; set; }
 
         // Birth Year.
         [Required]
-        [Display(Name = "Student Birth Year")]
+        [Display(Name = "Birth Year")]
         public int BirthYear { get; set; }
+
+        [Required]
+        [Display(Name = "Group")]
+        public string Roles { get; set; } = "Students";
         /*********************  End  Properties *******************/
 
 

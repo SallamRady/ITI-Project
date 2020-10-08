@@ -56,6 +56,24 @@ namespace ITIProject
                 "~/Areas/Dashboard/Content/css/style.css",
                 "~/Areas/Dashboard/Content/css/themes/all-themes.css"
                 ));
+
+            bundles.Add(new StyleBundle("~/Content/Login/Style.").Include(
+                "~/Areas/Dashboard/Content/plugins/bootstrap/css/bootstrap.css",
+                "~/Areas/Dashboard/Content/plugins/node-waves/waves.css",
+                "~/Areas/Dashboard/Content/plugins/animate-css/animate.css",
+                "~/Areas/Dashboard/Content/css/style.css"
+               ));
+
+            bundles.Add(new ScriptBundle("~/Content/Login/Script.").Include(
+                     "~/Areas/Dashboard/Content/plugins/jquery/jquery.min.js",
+                     "~/Areas/Dashboard/Content/plugins/bootstrap/js/bootstrap.js",
+                     "~/Areas/Dashboard/Content/plugins/node-waves/waves.js",
+                     "~/Areas/Dashboard/Content/plugins/jquery-validation/jquery.validate.js",
+                     "~/Areas/Dashboard/Content/js/admin.js",
+                     "~/Areas/Dashboard/Content/js/pages/examples/sign-in.js"
+                     ));
+
+
         }
     }
 }
