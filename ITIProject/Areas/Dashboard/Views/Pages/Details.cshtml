@@ -1,0 +1,55 @@
+﻿@model ITIProject.Models.DBFiles.Page
+
+@{
+    Layout = "~/Areas/Dashboard/Views/Shared/_Layout.cshtml";
+}
+    <div>
+        <h2>Page Details</h2>
+        <hr />
+        <div class="dl-horizontal">
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.DisplayNameFor(model => model.Title)
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.Title)
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.DisplayNameFor(model => model.SubTitle)
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.SubTitle)
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.DisplayNameFor(model => model.Content)
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.Content)
+                </div>
+            </div>
+        </div>
+    </div>
+  <hr />
+<p>
+    <a class="btn btn-info"
+       href="/Dashboard/Pages/Edit/@Model.ID"
+       title="Edit"
+       style="cursor:pointer;max-height: 35px;text-align: center;">
+        <span class="material-icons">edit</span>
+        <b>Edit</b>
+    </a>
+
+    <a class="btn btn-info"
+       href="/Dashboard/Pages/Index"
+       title="Edit"
+       style="cursor:pointer;max-height: 35px;text-align: center;">
+        <span class="material-icons">list</span>
+        <b>Back to List</b>
+    </a>
+</p>

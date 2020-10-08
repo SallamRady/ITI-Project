@@ -33,6 +33,8 @@ namespace ITIProject.Models
         public DbSet<Student> Students { get; set; }
         public DbSet<Cource> Courses { get; set; }
         public DbSet<Students_Cources> Students_Cources { get; set; }
+        public DbSet<Page> Pages { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         public static ApplicationDbContext Create()
         {

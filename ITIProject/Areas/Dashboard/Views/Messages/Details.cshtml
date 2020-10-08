@@ -1,0 +1,59 @@
+﻿@model ITIProject.Models.DBFiles.Message
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Dashboard/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Message</h4>
+    <hr />
+    <div class="dl-horizontal">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Email)
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Email)
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Time)
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Time)
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Content)
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Content)
+            </div>
+        </div>
+        <br/>
+    </div>
+</div>
+<p>
+    <a class="btn btn-info"
+       href="/Dashboard/Messages/Edit/@Model.ID"
+       title="Edit"
+       style="cursor:pointer;max-height: 35px;text-align: center;">
+        <span class="material-icons">edit</span>
+        <b>Edit</b>
+    </a>
+
+    <a class="btn btn-info"
+       href="/Dashboard/Messages/Index"
+       title="Edit"
+       style="cursor:pointer;max-height: 35px;text-align: center;">
+        <span class="material-icons">list</span>
+        <b>Back to List</b>
+    </a>
+</p>

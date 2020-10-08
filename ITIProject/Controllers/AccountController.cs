@@ -472,7 +472,6 @@ namespace ITIProject.Controllers
                 return RedirectToAction("Index", "Dashboard/Home");
             }
             return RedirectToAction("Index", "Home");
-            return Content("Not Has Dashboard Word in url");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

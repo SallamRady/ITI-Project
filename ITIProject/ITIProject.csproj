@@ -204,6 +204,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Dashboard\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\MessagesController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\PagesController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\RolesController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\StudentsController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
@@ -282,10 +284,28 @@
     <Compile Include="Migrations\202010072323519_update-roles_Sallam_2.Designer.cs">
       <DependentUpon>202010072323519_update-roles_Sallam_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010082000338_update-addPages.cs" />
+    <Compile Include="Migrations\202010082000338_update-addPages.Designer.cs">
+      <DependentUpon>202010082000338_update-addPages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010082008548_update-addPages2.cs" />
+    <Compile Include="Migrations\202010082008548_update-addPages2.Designer.cs">
+      <DependentUpon>202010082008548_update-addPages2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010082117382_update-addMessages.cs" />
+    <Compile Include="Migrations\202010082117382_update-addMessages.Designer.cs">
+      <DependentUpon>202010082117382_update-addMessages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010082129403_update-addMessages2.cs" />
+    <Compile Include="Migrations\202010082129403_update-addMessages2.Designer.cs">
+      <DependentUpon>202010082129403_update-addMessages2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DBFiles\Cource.cs" />
     <Compile Include="Models\DBFiles\Department.cs" />
+    <Compile Include="Models\DBFiles\Message.cs" />
+    <Compile Include="Models\DBFiles\Page.cs" />
     <Compile Include="Models\DBFiles\Professor.cs" />
     <Compile Include="Models\DBFiles\Student.cs" />
     <Compile Include="Models\DBFiles\Students_Cources.cs" />
@@ -332,6 +352,16 @@
     <Content Include="Areas\Dashboard\Views\Roles\Delete.cshtml" />
     <Content Include="Areas\Dashboard\Views\Home\Login.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_Login_Layout.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Pages\Create.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Pages\Delete.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Pages\Details.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Pages\Edit.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Pages\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Messages\Create.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Messages\Delete.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Messages\Details.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Messages\Edit.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Messages\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -445,6 +475,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010072323519_update-roles_Sallam_2.resx">
       <DependentUpon>202010072323519_update-roles_Sallam_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010082000338_update-addPages.resx">
+      <DependentUpon>202010082000338_update-addPages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010082008548_update-addPages2.resx">
+      <DependentUpon>202010082008548_update-addPages2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010082117382_update-addMessages.resx">
+      <DependentUpon>202010082117382_update-addMessages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010082129403_update-addMessages2.resx">
+      <DependentUpon>202010082129403_update-addMessages2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
