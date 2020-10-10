@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ITIProject.Models;
+using System.Web.Security;
 
 namespace ITIProject.Controllers
 {
@@ -75,7 +76,7 @@ namespace ITIProject.Controllers
                 {
                     return RedirectToAction("Login", "Dashboard/Home");
                 }else {
-                    return View(model);
+                    return RedirectToAction("Login", "Site/Home");
                 }
                 
             }
@@ -100,7 +101,7 @@ namespace ITIProject.Controllers
                     }
                     else
                     {
-                        return View(model);
+                        return RedirectToAction("Login", "Site/Home", model);
                     }   
             }
         }
@@ -405,10 +406,15 @@ namespace ITIProject.Controllers
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
+        public ActionResult LogOff(string dashboard)
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            FormsAuthentication.SignOut();
+           // AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            if(!string.IsNullOrEmpty(dashboard) && dashboard.Contains("Dashboard"))
+            {
+                return RedirectToAction("Login", "Home", new { area = "Dashboard" });
+            }
+            return RedirectToAction("Index", "Home", new { area = "Site" });
         }
 
         //
@@ -471,7 +477,7 @@ namespace ITIProject.Controllers
             {
                 return RedirectToAction("Index", "Dashboard/Home");
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Site/Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

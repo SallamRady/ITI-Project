@@ -168,17 +168,40 @@
                     <table class="table table-hover dashboard-task-infos">
                         <thead>
                             <tr>
-                                <th>#</th>
                                 <th>Name</th>
                                 <th>Manager</th>
-                                <th>Number Of Student</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td colspan="5">I wait Magdy</td>
-                            </tr>
+                                @foreach (var item in ViewBag.Last3Departments)
+                                {
+                                <tr>
+                                    <th>@item.Name</th>
+                                    <th>@item.Professor.Name</th>
+                                    <th>
+                                        <a class="btn btn-primary"
+                                           href="/Dashboard/Departments/Edit/@item.ID"
+                                           title="Edit"
+                                           style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                            <span class="material-icons">edit</span>
+                                        </a> |
+                                        <a class="btn btn-info"
+                                           href="/Dashboard/Departments/Details/@item.ID"
+                                           title="Details"
+                                           style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                            <span class="material-icons">visibility</span>
+                                        </a> |
+                                        <a class="btn btn-danger"
+                                           href="/Dashboard/Departments/Delete/@item.ID"
+                                           title="Delete"
+                                           style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                            <span class="material-icons">delete</span>
+                                        </a>
+                                    </th>
+                                </tr>
+                                }
+                            
                         </tbody>
                     </table>
                 </div>

@@ -21,11 +21,12 @@
                         <li><a href="#"><i class="material-icons">favorite</i>Likes</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#"><i class="material-icons">input</i>Sign Out</a>
-                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
+                            @using (Html.BeginForm("LogOff", "../Account", FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
                                 <div class="btn btn-default" style="color:black">
                                     <span class="material-icons">input</span>
+                                    <input type="hidden" name="dashboard" value="Dashboard" />
                                     <input type="submit" value="Logout" class="item" />
                                 </div>
                             }
@@ -40,70 +41,71 @@
             <ul class="list">
                 <li class="header">MAIN NAVIGATION</li>
                 <!--Dashboard Home Link-->
-                <li class="active">
-                    <a href="/Dashboard/Home/Index">
-                        <i class="material-icons">home</i>
+                <li class="@if(Request.Url.AbsoluteUri.Contains("Home")){<text>active</text>}">
+              <a href="/Dashboard/Home/Index">
+
+
+           <i class="material-icons">home</i>
                         <span>Home</span>
                     </a>
                 </li>
                 <!--Roles Link-->
-                <li>
+                <li class="@if(Request.Url.AbsoluteUri.Contains("Roles")){<text>active</text>}">
                     <a href="/Dashboard/Roles/Index">
                         <i class="material-icons">local_police</i>
                         <span>Roles</span>
                     </a>
                 </li>
                 <!--Admins Link-->
-                <li>
+                <li >
                     <a href="/Dashboard/Roles/Index">
                         <i class="material-icons">admin_panel_settings</i>
                         <span>Admins</span>
                     </a>
                 </li>
                 <!--Department Link-->
-                <li>
+                <li class="@if(Request.Url.AbsoluteUri.Contains("Departments")){<text>active</text>}">
                     <a href="/Dashboard/Departments/Index">
                         <i class="material-icons">widgets</i>
                         <span>Departments</span>
                     </a>
                 </li>
                 <!--Courses Link-->
-                <li>
+                <li class="@if(Request.Url.AbsoluteUri.Contains("Cources")){<text>active</text>}">
                     <a href="/Dashboard/Cources/Index">
                         <i class="material-icons">storage</i>
                         <span>Courses</span>
                     </a>
                 </li>
                 <!--professors Link-->
-                <li>
+                <li class="@if(Request.Url.AbsoluteUri.Contains("Professors")){<text>active</text>}">
                     <a href="/Dashboard/Professors/Index">
                         <i class="material-icons">people_alt</i>
                         <span>Professors</span>
                     </a>
                 </li>
                 <!--Students Link-->
-                <li>
+                <li class="@if(Request.Url.AbsoluteUri.Contains("Students")){<text>active</text>}">
                     <a href="/Dashboard/Students/Index">
                         <i class="material-icons">face</i>
                         <span>Students</span>
                     </a>
                 </li>
                 <!--Students Link-->
-                <li>
+                <li  class="@if(Request.Url.AbsoluteUri.Contains("Pages")){<text>active</text>}">
                     <a href="/Dashboard/Pages/Index">
                         <i class="material-icons">pages</i>
                         <span>Pages</span>
                     </a>
                 </li>
                 <!--Messages Link-->
-                <li>
+                <li  class="@if(Request.Url.AbsoluteUri.Contains("Messages")){<text>active</text>}">
                     <a href="/Dashboard/Messages/Index">
                         <i class="material-icons">message</i>
                         <span>Messages</span>
                     </a>
                 </li>
-
-                
+ 
             </ul>
         </div>
         <!-- #Menu -->

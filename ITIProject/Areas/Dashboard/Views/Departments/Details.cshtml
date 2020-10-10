@@ -1,0 +1,48 @@
+﻿@model ITIProject.Models.DBFiles.Department
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Dashboard/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details Department</h2>
+
+<div>
+    <hr />
+    <div class="dl-horizontal row">
+        <div class="col-md-3">
+            Manager Name
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.Professor.Name)
+        </div>
+        <br/>
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.Name)
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+
+    </div>
+</div>
+<br/>
+<p>
+    <a class="btn btn-info"
+       href="/Dashboard/Departments/Edit/@Model.ID"
+       title="Edit"
+       style="cursor:pointer;max-height: 35px;text-align: center;">
+        <span class="material-icons">edit</span>
+        <b>Edit</b>
+    </a>
+
+    <a class="btn btn-info"
+       href="/Dashboard/Departments/Index"
+       title="Edit"
+       style="cursor:pointer;max-height: 35px;text-align: center;">
+        <span class="material-icons">list</span>
+        <b>Back to List</b>
+    </a>
+</p>

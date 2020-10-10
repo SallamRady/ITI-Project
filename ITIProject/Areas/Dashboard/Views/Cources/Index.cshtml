@@ -1,0 +1,167 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<ITIProject.Models.DBFiles.Cource>
+
+@{
+    ViewBag.Title = "Courses Management";
+    Layout = "~/Areas/Dashboard/Views/Shared/_Layout.cshtml";
+}
+<div class="card table-responsive">
+    <div class="header">
+        <div style="display:inline-block">
+            <h2>Courses Management</h2>
+            <small>you can edit-delete-update any columns except header/footer.</small>
+        </div>
+        <a class="btn btn-primary" href="/Dashboard/Cources/Create" style="float:right">Create New Course</a>
+    </div>
+    <br />
+    <!-- Form For Search -->
+    <form action="/Dashboard/Cources/Index" method="get">
+        <b> Search Option : </b>
+        <select name="searchBy" style="padding:5px;margin:2px">
+            <option value="Name">Name</option>
+            <option value="Professor">Professor</option>
+            <option value="Department">Department</option>
+        </select>
+        <input type="text" name="SearchKeyWord" placeholder="Search....." style="padding:5px" />
+        <input type="submit" name="submit" value="Search" style="padding:5px" />
+    </form>
+    <hr />
+    <div class="body-content" style="margin:3px">
+        <table id="mainTable" class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Department.Name)
+                    </th>
+                    <th>
+                        Professor Name
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Name)
+                    </th>
+                    <th>
+                        Free?
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Cost)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Hours)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Degree)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().MinDegree)
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() == 0)
+                {
+                    <tr>
+                        <th colspan="9" style="color:red">There are no rows</th>
+                    </tr>
+                }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Department.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Professor.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @if(item.Free == false)
+                            {
+                                <text>Yes</text>
+                            }
+                            else
+                            {
+                                <text>No</text>
+}
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cost)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hours)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Degree)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MinDegree)
+                        </td>
+                        <td>
+                            <a class="btn btn-primary"
+                               href="/Dashboard/Cources/Edit/@item.ID"
+                               title="Edit"
+                               style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                <span class="material-icons">edit</span>
+                            </a> |
+                            <a class="btn btn-info"
+                               href="/Dashboard/Cources/Details/@item.ID"
+                               title="Details"
+                               style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                <span class="material-icons">visibility</span>
+                            </a> |
+                            <a class="btn btn-danger"
+                               href="/Dashboard/Cources/Delete/@item.ID"
+                               title="Delete"
+                               style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                <span class="material-icons">delete</span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Department.Name)
+                    </th>
+                    <th>
+                        Professor Name
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Name)
+                    </th>
+                    <th>
+                        Free?
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Cost)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Hours)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Degree)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().MinDegree)
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+        @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new
+       {
+       pageNumber,
+       searchBy = Request.QueryString["searchBy"],
+       SearchKeyWord = Request.QueryString["SearchKeyWord"],
+       pageSize = 10
+       }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })
+    </div>
+</div>

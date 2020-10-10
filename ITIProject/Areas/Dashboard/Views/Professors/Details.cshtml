@@ -1,0 +1,80 @@
+﻿@model ITIProject.Models.DBFiles.Professor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Dashboard/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Professor</h4>
+    <hr />
+    <div class="dl-horizontal row">
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.Department.Name)
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.Department.Name)
+        </div>
+
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.Name)
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.Email)
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.Email)
+        </div>
+
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.City)
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.City)
+        </div>
+
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.Salary)
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.Salary)
+        </div>
+
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.Roles)
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.Roles)
+        </div>
+
+    </div>
+</div>
+<p>
+    <a class="btn btn-info"
+       href="/Dashboard/Professors/Edit/@Model.ID"
+       title="Edit"
+       style="cursor:pointer;max-height: 35px;text-align: center;">
+        <span class="material-icons">edit</span>
+        <b>Edit</b>
+    </a>
+
+    <a class="btn btn-info"
+       href="/Dashboard/Professors/Index"
+       title="Edit"
+       style="cursor:pointer;max-height: 35px;text-align: center;">
+        <span class="material-icons">list</span>
+        <b>Back to List</b>
+    </a>
+</p>

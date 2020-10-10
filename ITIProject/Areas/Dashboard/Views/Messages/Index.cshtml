@@ -50,6 +50,12 @@
                             @Html.DisplayFor(modelItem => item.Content)
                         </td>
                         <td>
+                            <a class="btn btn-success"
+                               href="/Dashboard/Messages/Repeat/@item.ID"
+                               title="Repeat"
+                               style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                <span class="material-icons">send</span>
+                            </a> |
                             <a class="btn btn-primary"
                                href="/Dashboard/Messages/Edit/@item.ID"
                                title="Edit"

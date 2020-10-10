@@ -26,6 +26,7 @@ namespace ITIProject.Areas.Dashboard.Controllers
             ViewBag.PagesCount          = db.Pages.Count();
             ViewBag.FollowersCount      = 0;
             ViewBag.Last3Messages       = db.Messages.OrderByDescending(x => x.ID).Take(3).ToList();
+            ViewBag.Last3Departments    = db.Deparments.OrderByDescending(x => x.ID).Take(3).ToList();
             return View();
         }
 

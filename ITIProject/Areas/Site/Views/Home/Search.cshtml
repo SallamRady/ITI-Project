@@ -1,0 +1,58 @@
+﻿@model List<ITIProject.Models.DBFiles.Cource>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Areas/Site/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <br />
+    <div class="row" style="display:block">
+        <div class="col-xs-12">
+            <form action="Search" style="display:inline-flex;float:right">
+                <div class="form-group">
+                    <input type="text" name="SearchKeyWord" class="form-control" placeholder="Search by Course Name  ">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Search  " class="form-control btn btn-default">
+                </div>
+            </form>
+        </div>
+    </div>
+    <br />
+    <h1 style="text-align:center">Result of Search by ' @Request.QueryString["SearchKeyWord"] '</h1><br />
+    <div class="row">
+        @foreach (var Course in Model)
+        {
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="~/Areas/Site/Content/assets/img/ilya-yakover.jpg" class="img-responsive">
+                        </div>
+                        <div class="col-md-8 px-3">
+                            <div class="card-block px-3">
+                                <h4 class="card-title">Course Name : @Course.Name</h4>
+                                @if (Course.Free == false)
+                                {
+                                    <p class="card-text">Course Status : <mark>Free!</mark></p>
+                                }
+                                else
+                                {
+                                    <p class="card-text">Course Status : Not Free</p>
+                                    <p class="card-text">Course Cost   : <mark>@Course.Cost</mark> $ </p>
+                                }
+                                <p class="card-text">Course Professor : @Course.Professor.Name </p>
+                                <p class="card-text">Course Department : @Course.Department.Name </p>
+                                <p class="card-text">Course Degree : @Course.Degree </p>
+                                <p class="card-text">Course Min Degree : @Course.MinDegree </p>
+                                <a href="#" class="btn btn-danger" style="float: right;">Join a course</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

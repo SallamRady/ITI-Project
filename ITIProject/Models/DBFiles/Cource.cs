@@ -23,7 +23,7 @@ namespace ITIProject.Models.DBFiles
         [StringLength(100, ErrorMessage = "Name length can't be more than 100 char..")]
         public string Name { get; set; }
 
-        // Free.
+        // Free.--> false=free - true=not free
         [Display(Name = "Course Free?")]
         public bool Free { get; set; } = false;
 

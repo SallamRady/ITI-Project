@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ITIProject.Models.DBFiles.Department>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Dashboard/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card table-responsive">
+    <div class="header">
+        <div style="display:inline-block">
+            <h2>Departments Management</h2>
+            <small>you can edit-delete-update any columns except header/footer.</small>
+        </div>
+        <a class="btn btn-primary" href="/Dashboard/Departments/Create" style="float:right">Create New Department</a>
+    </div>
+    <div class="body-content" style="margin:3px">
+        <table id="mainTable" class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        Manager Name
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() == 0)
+                {
+                    <tr>
+                        <th colspan="3" style="color:red">There are no rows</th>
+                    </tr>
+                }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Professor.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            <a class="btn btn-primary"
+                               href="/Dashboard/Departments/Edit/@item.ID"
+                               title="Edit"
+                               style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                <span class="material-icons">edit</span>
+                            </a> |
+                            <a class="btn btn-info"
+                               href="/Dashboard/Departments/Details/@item.ID"
+                               title="Details"
+                               style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                <span class="material-icons">visibility</span>
+                            </a> |
+                            <a class="btn btn-danger"
+                               href="/Dashboard/Departments/Delete/@item.ID"
+                               title="Delete"
+                               style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                <span class="material-icons">delete</span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>
+                        Manager Name
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

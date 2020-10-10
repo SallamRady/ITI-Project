@@ -1,0 +1,53 @@
+﻿@model ITIProject.Models.DBFiles.Department
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Dashboard/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Department</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "  Department Name" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br/>
+        <div class="form-group row">
+            <div class="col-md-2">
+                @Html.Label("Manager Name ", htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-10">
+                @Html.DropDownList("Manager_ID", null, htmlAttributes: new { @style="padding:5px" })
+                @Html.ValidationMessageFor(model => model.Manager_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a class="btn btn-primary"
+       href="/Dashboard/Departments/Index"
+       title="Edit"
+       style="cursor:pointer;max-height: 35px;text-align: center;">
+        <span class="material-icons">list</span>
+        <b>Back to List</b>
+    </a>
+</div>

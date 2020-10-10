@@ -71,28 +71,27 @@ namespace ITIProject.Areas.Dashboard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Email,City,Image,Level,BirthYear,Student_Department_ID,Student_Professor_supervisior_ID")] Student student,HttpPostedFile ImageFile)
+        public ActionResult Create([Bind(Include = "ID,Name,Email,City,Image,Level,BirthYear,Student_Department_ID,Student_Professor_supervisior_ID")] Student student,HttpPostedFileBase ImageFile)
         {
             //return Content(ImageFile.FileName);
             //manage Images... :)
-            //if(!string.IsNullOrEmpty(ImageFile.FileName))
-            //{
-            //    string fileName  = Path.GetFileNameWithoutExtension(ImageFile.FileName);
-            //    fileName += DateTime.Now.ToString("yymmssfff");
-            //    string extention = Path.GetExtension(ImageFile.FileName);
-            //    fileName = fileName + extention;
-            //    student.Image = "~/Content/Images/" + fileName;
-            //    fileName = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
-            //    ImageFile.SaveAs(fileName);
-            //}
-            //else
-            //{
-            //    student.Image = "~/Content/Images/default.png";
-            //}
-            
-            if (ModelState.IsValid)
+            if (ImageFile != null)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                fileName += DateTime.Now.ToString("yymmssfff");
+                string extention = Path.GetExtension(ImageFile.FileName);
+                fileName = fileName + extention;
+                student.Image = "~/Content/Images/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+                ImageFile.SaveAs(fileName);
+            }
+            else
             {
                 student.Image = "~/Content/Images/default.png";
+            }
+
+            if (ModelState.IsValid)
+            {
                 db.Students.Add(student);
                 db.SaveChanges();
                 CreateUser(student.Name, student.Email);
@@ -138,10 +137,23 @@ namespace ITIProject.Areas.Dashboard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Email,City,Level,BirthYear,Student_Department_ID,Student_Professor_supervisior_ID")] Student student)
+        public ActionResult Edit([Bind(Include = "ID,Name,Email,City,Level,Image,BirthYear,Student_Department_ID,Student_Professor_supervisior_ID")] Student student,HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {
+                if (ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                    fileName += DateTime.Now.ToString("yymmssfff");
+                    string extention = Path.GetExtension(ImageFile.FileName);
+                    fileName = fileName + extention;
+                    student.Image = "~/Content/Images/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+                    ImageFile.SaveAs(fileName);
+                }else
+                {
+                    student.Image = student.Image;
+                }
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

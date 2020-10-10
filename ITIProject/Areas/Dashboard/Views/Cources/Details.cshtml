@@ -1,0 +1,102 @@
+﻿@model ITIProject.Models.DBFiles.Cource
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Dashboard/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr/>
+    <div class="dl-horizontal row">
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.Department.Name)
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.Department.Name)
+        </div>
+
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.Professor.Name)
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.Professor.Name)
+        </div>
+
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.Name)
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.Free)
+        </div>
+
+        <div class="col-md-9">
+            @if(Model.Free == false)
+            {
+                <text>Yes</text>
+            }
+            else
+            {
+                <text>No</text>
+            }
+        </div>
+
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.Cost)
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.Cost)
+        </div>
+
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.Hours)
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.Hours)
+        </div>
+
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.Degree)
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.Degree)
+        </div>
+
+        <div class="col-md-3">
+            @Html.DisplayNameFor(model => model.MinDegree)
+        </div>
+
+        <div class="col-md-9">
+            @Html.DisplayFor(model => model.MinDegree)
+        </div>
+
+    </div>
+</div>
+<br/>
+<p>
+    <a class="btn btn-info"
+       href="/Dashboard/Cources/Index"
+       title="Edit"
+       style="cursor:pointer;max-height: 35px;text-align: center;">
+        <span class="material-icons">edit</span>
+        <b>Edit</b>
+    </a> |
+    <a class="btn btn-primary"
+       href="/Dashboard/Cources/Index"
+       title="Edit"
+       style="cursor:pointer;max-height: 35px;text-align: center;">
+        <span class="material-icons">list</span>
+        <b>Back to List</b>
+    </a>
+</p>

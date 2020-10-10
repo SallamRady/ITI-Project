@@ -1,0 +1,73 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html lang="en">
+ <!-- Head File -->
+   @Html.Partial("~/Areas/Site/Views/Shared/_head.cshtml")
+ <!-- # Head File -->
+ <body class="index-page sidebar-collapse">
+     <nav class="navbar navbar-expand-lg bg-danger">
+         <div class="container">
+             <a class="navbar-brand" href="#">ITI Academy</a>
+             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-danger" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-bar"></span>
+                 <span class="navbar-toggler-bar"></span>
+                 <span class="navbar-toggler-bar"></span>
+             </button>
+             <div class="navbar-collapse collapse show" id="navbar-danger" style="">
+                 <ul class="navbar-nav ml-auto">
+                     <li class="nav-item">
+                         <a href="/Site/Home/LandScap" class="nav-link  navbar-right">LandingPage</a>
+                     </li>
+                     <li class="nav-item dropdown">
+                         <a class="dropdown-toggle nav-link  navbar-right" style="cursor:pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             Departments
+                         </a>
+                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                             @foreach (var dept in ViewBag.Departments)
+                             {
+                                 <a class="dropdown-item" href="#">@dept.Name</a>
+                             }
+
+                         </div>
+                     </li>
+                     @if (Request.IsAuthenticated)
+                     {
+                         using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right",@style="display:inline-flex" }))
+                         {
+                             @Html.AntiForgeryToken()
+
+                             <li class="nav-item">
+                                 @Html.ActionLink(User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+                             </li>
+                             <li class="nav-item">
+                                 <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link ">Log Out</a>
+                             </li>
+                         }
+                     }
+                     else
+                     {
+
+                         <li class="nav-item">
+                             @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })
+                         </li>
+                         <li class="nav-item">
+                             @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })
+                         </li>
+
+                     }
+                 </ul>
+             </div>
+         </div>
+     </nav>
+     <div class="main">
+         @RenderBody()
+         <!-- Start Footer -->
+         @Html.Partial("~/Areas/Site/Views/Shared/_footer.cshtml")
+         <!-- End Footer -->
+     </div>
+
+     <!-- Core Scripts  File-->
+     @Html.Partial("~/Areas/Site/Views/Shared/_CoreScript.cshtml")
+
+ </body>
+</html>
