@@ -284,6 +284,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ReadMe\scriptOfITIProject.sql" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -369,6 +370,7 @@
     <Content Include="Areas\Site\Views\Home\JoinACourse.cshtml" />
     <Content Include="Areas\Site\Views\Home\PayCourse.cshtml" />
     <Content Include="Areas\Site\Views\Home\Lession.cshtml" />
+    <Content Include="ReadMe\Project.rtf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
