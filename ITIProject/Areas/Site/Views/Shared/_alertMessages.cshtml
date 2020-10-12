@@ -1,0 +1,34 @@
+﻿
+@if (TempData.ContainsKey("errorMsg"))
+{
+    <div class="alert alert-danger"
+         style="position: absolute;
+                z-index: 99;
+                color: white;
+                font-size: 16px;
+                font-weight: 500;
+                border: 2px solid wheat;
+                border-radius: 17px;
+                margin: 10px;
+                top: 111px;
+                right: 150px;">
+    @TempData["errorMsg"]
+    </div>
+}
+
+@if (TempData.ContainsKey("goodMsg"))
+{
+    <div class="message alert alert-success"
+         style="position: absolute;
+                z-index: 99;
+                color: white;
+                font-size: 16px;
+                font-weight: 500;
+                border: 2px solid wheat;
+                border-radius: 17px;
+                margin: 10px;
+                top: 111px;
+                right: 150px;">
+        @TempData["goodMsg"]
+    </div>
+}

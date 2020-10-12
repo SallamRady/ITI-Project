@@ -29,11 +29,11 @@
                 <div class="card">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="~/Areas/Site/Content/assets/img/ilya-yakover.jpg" class="img-responsive">
+                            <img src="@Course.Image" class="img-responsive">
                         </div>
                         <div class="col-md-8 px-3">
                             <div class="card-block px-3">
-                                <h4 class="card-title">Course Name : @Course.Name</h4>
+                               <h4 class="card-title">Course Name : @Course.Name</h4>
                                @if (Course.Free == false)
                                {
                                 <p class="card-text">Course Status : <mark>Free!</mark></p>
@@ -47,7 +47,7 @@
                                 <p class="card-text">Course Department : @Course.Department.Name </p>
                                 <p class="card-text">Course Degree : @Course.Degree </p>
                                 <p class="card-text">Course Min Degree : @Course.MinDegree </p>
-                                <a href="#" class="btn btn-danger" style="float: right;">Join a course</a>
+                                <a href="/Site/Home/JoinACourse/@Course.ID" class="btn btn-danger" style="float: right;">Join a course</a>
                                
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                 @Html.PagedListPager(Model, pageNumber => Url.Action("Index", "/Home", new
                  {
                   pageNumber,
-                  pageSize = 4
+                  pageSize = 6
                 }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })
             </div>
         </div>

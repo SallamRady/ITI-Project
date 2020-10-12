@@ -9,9 +9,11 @@ using System.Web;
 using System.Web.Mvc;
 using ITIProject.Models;
 using ITIProject.Models.DBFiles;
+using System.IO;
 
 namespace ITIProject.Areas.Dashboard.Controllers
 {
+    [Authorize(Roles = "Admins,Professors,Managers")]
     public class CourcesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -69,8 +71,22 @@ namespace ITIProject.Areas.Dashboard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Free,Cost,Hours,Degree,MinDegree,Course_Department_ID,Course_Professor_ID")] Cource cource)
+        public ActionResult Create([Bind(Include = "ID,Name,Free,Image,Cost,Hours,Degree,MinDegree,Course_Department_ID,Course_Professor_ID")] Cource cource,HttpPostedFileBase ImageFile)
         {
+            if (ImageFile != null)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                fileName += DateTime.Now.ToString("yymmssfff");
+                string extention = Path.GetExtension(ImageFile.FileName);
+                fileName = fileName + extention;
+                cource.Image = "/Content/Images/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+                ImageFile.SaveAs(fileName);
+            }
+            else
+            {
+                cource.Image = "/Content/Images/course.png";
+            }
             if (ModelState.IsValid)
             {
                 db.Courses.Add(cource);
@@ -105,10 +121,24 @@ namespace ITIProject.Areas.Dashboard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Free,Cost,Hours,Degree,MinDegree,Course_Department_ID,Course_Professor_ID")] Cource cource)
+        public ActionResult Edit([Bind(Include = "ID,Name,Free,Image,Cost,Hours,Degree,MinDegree,Course_Department_ID,Course_Professor_ID")] Cource cource,HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {
+                if (ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                    fileName += DateTime.Now.ToString("yymmssfff");
+                    string extention = Path.GetExtension(ImageFile.FileName);
+                    fileName = fileName + extention;
+                    cource.Image = "/Content/Images/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+                    ImageFile.SaveAs(fileName);
+                }
+                else
+                {
+                    cource.Image = Request.Form["Image"];
+                }
                 db.Entry(cource).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

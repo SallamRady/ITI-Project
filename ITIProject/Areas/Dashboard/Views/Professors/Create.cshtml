@@ -7,7 +7,7 @@
 
 <h2>Create Professor</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Professors", FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     @Html.AntiForgeryToken()
     
@@ -44,6 +44,15 @@
             </div>
         </div>
         <br/>
+        <div class="form-group row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-10">
+                <input type="file" name="ImageFile" value="default.png" class="form-control" />
+            </div>
+        </div>
+        <br />
         <div class="form-group row">
             <div class="col-md-2">
                 @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label" })

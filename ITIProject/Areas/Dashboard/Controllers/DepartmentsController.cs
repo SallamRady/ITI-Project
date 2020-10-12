@@ -11,6 +11,7 @@ using ITIProject.Models.DBFiles;
 
 namespace ITIProject.Areas.Dashboard.Controllers
 {
+    [Authorize(Roles = "Admins")]
     public class DepartmentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -27,6 +27,8 @@ namespace ITIProject.Models.DBFiles
         [Display(Name = "Course Free?")]
         public bool Free { get; set; } = false;
 
+        //Image..
+        public string Image { get; set; }
 
         // Cost.
         [Required]
@@ -75,6 +77,10 @@ namespace ITIProject.Models.DBFiles
         public Nullable<int> Course_Professor_ID { get; set; }
         public virtual Professor Professor { get; set; }
         /******************  End  Relation Course:Professor *************/
+
+        [Display(Name = "Course Lessions")]
+        [InverseProperty("Cource")] // refer to Course property in course class.
+        public virtual ICollection<Lession> Course_Lessions { get; set; }
 
         /**************************  End  The Relations *******************************/
     }

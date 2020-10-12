@@ -203,9 +203,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\AdminsController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\AuthorizeToDashboardAttribute.cs" />
     <Compile Include="Areas\Dashboard\Controllers\CourcesController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\DepartmentsController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\LessionsController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\MessagesController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\PagesController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\ProfessorsController.cs" />
@@ -221,94 +224,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009301518556_update-Setup4.cs" />
-    <Compile Include="Migrations\202009301518556_update-Setup4.Designer.cs">
-      <DependentUpon>202009301518556_update-Setup4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301540242_update-Setup4_addStudent.cs" />
-    <Compile Include="Migrations\202009301540242_update-Setup4_addStudent.Designer.cs">
-      <DependentUpon>202009301540242_update-Setup4_addStudent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301541553_update-Setup4_addStudent1.cs" />
-    <Compile Include="Migrations\202009301541553_update-Setup4_addStudent1.Designer.cs">
-      <DependentUpon>202009301541553_update-Setup4_addStudent1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301616565_update-Setup4_addStudent2.cs" />
-    <Compile Include="Migrations\202009301616565_update-Setup4_addStudent2.Designer.cs">
-      <DependentUpon>202009301616565_update-Setup4_addStudent2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301628359_update-Setup4_addStudent3.cs" />
-    <Compile Include="Migrations\202009301628359_update-Setup4_addStudent3.Designer.cs">
-      <DependentUpon>202009301628359_update-Setup4_addStudent3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301639007_update-Setup4_addStudent4.cs" />
-    <Compile Include="Migrations\202009301639007_update-Setup4_addStudent4.Designer.cs">
-      <DependentUpon>202009301639007_update-Setup4_addStudent4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301640128_update-Setup4_addStudent5.cs" />
-    <Compile Include="Migrations\202009301640128_update-Setup4_addStudent5.Designer.cs">
-      <DependentUpon>202009301640128_update-Setup4_addStudent5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301727141_update-Setup4_addCourse1.cs" />
-    <Compile Include="Migrations\202009301727141_update-Setup4_addCourse1.Designer.cs">
-      <DependentUpon>202009301727141_update-Setup4_addCourse1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301728398_update-Setup4_addCourse2.cs" />
-    <Compile Include="Migrations\202009301728398_update-Setup4_addCourse2.Designer.cs">
-      <DependentUpon>202009301728398_update-Setup4_addCourse2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301736220_update-Setup4_addCourse3.cs" />
-    <Compile Include="Migrations\202009301736220_update-Setup4_addCourse3.Designer.cs">
-      <DependentUpon>202009301736220_update-Setup4_addCourse3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301740237_update-Setup4_addCourse4.cs" />
-    <Compile Include="Migrations\202009301740237_update-Setup4_addCourse4.Designer.cs">
-      <DependentUpon>202009301740237_update-Setup4_addCourse4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301747293_update-Setup4_addCourse5.cs" />
-    <Compile Include="Migrations\202009301747293_update-Setup4_addCourse5.Designer.cs">
-      <DependentUpon>202009301747293_update-Setup4_addCourse5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010051432024_update-file105.cs" />
-    <Compile Include="Migrations\202010051432024_update-file105.Designer.cs">
-      <DependentUpon>202010051432024_update-file105.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010061647225_update-addRoles.cs" />
-    <Compile Include="Migrations\202010061647225_update-addRoles.Designer.cs">
-      <DependentUpon>202010061647225_update-addRoles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010071021092_update-addimage1.cs" />
-    <Compile Include="Migrations\202010071021092_update-addimage1.Designer.cs">
-      <DependentUpon>202010071021092_update-addimage1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010072213492_update-roles_Sallam.cs" />
-    <Compile Include="Migrations\202010072213492_update-roles_Sallam.Designer.cs">
-      <DependentUpon>202010072213492_update-roles_Sallam.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010072323519_update-roles_Sallam_2.cs" />
-    <Compile Include="Migrations\202010072323519_update-roles_Sallam_2.Designer.cs">
-      <DependentUpon>202010072323519_update-roles_Sallam_2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010082000338_update-addPages.cs" />
-    <Compile Include="Migrations\202010082000338_update-addPages.Designer.cs">
-      <DependentUpon>202010082000338_update-addPages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010082008548_update-addPages2.cs" />
-    <Compile Include="Migrations\202010082008548_update-addPages2.Designer.cs">
-      <DependentUpon>202010082008548_update-addPages2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010082117382_update-addMessages.cs" />
-    <Compile Include="Migrations\202010082117382_update-addMessages.Designer.cs">
-      <DependentUpon>202010082117382_update-addMessages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010082129403_update-addMessages2.cs" />
-    <Compile Include="Migrations\202010082129403_update-addMessages2.Designer.cs">
-      <DependentUpon>202010082129403_update-addMessages2.cs</DependentUpon>
+    <Compile Include="Migrations\202010112339569_update-lession3.cs" />
+    <Compile Include="Migrations\202010112339569_update-lession3.Designer.cs">
+      <DependentUpon>202010112339569_update-lession3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DBFiles\Cource.cs" />
     <Compile Include="Models\DBFiles\Department.cs" />
+    <Compile Include="Models\DBFiles\Lession.cs" />
     <Compile Include="Models\DBFiles\Message.cs" />
     <Compile Include="Models\DBFiles\Page.cs" />
     <Compile Include="Models\DBFiles\Professor.cs" />
@@ -332,6 +256,7 @@
     <Content Include="Areas\Site\Content\assets\img\clouds.png" />
     <Content Include="Areas\Site\Content\assets\img\daniel-olahs.jpg" />
     <Content Include="Areas\Site\Content\assets\img\default.png" />
+    <Content Include="Areas\Site\Content\assets\img\fabio-mangione.jpg" />
     <Content Include="Areas\Site\Content\assets\img\favicon.ico" />
     <Content Include="Areas\Site\Content\assets\img\favicon.png" />
     <Content Include="Areas\Site\Content\assets\img\fog-low.png" />
@@ -352,6 +277,7 @@
     <Content Include="Areas\Site\Content\assets\js\plugins\nouislider.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\course.png" />
     <Content Include="Content\Images\default.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
@@ -430,6 +356,19 @@
     <Content Include="Areas\Site\Views\Home\Page.cshtml" />
     <Content Include="Areas\Site\Views\Home\Login.cshtml" />
     <Content Include="Areas\Site\Views\Home\Search.cshtml" />
+    <Content Include="Areas\Site\Views\Home\Profile.cshtml" />
+    <Content Include="Areas\Site\Views\Home\Register.cshtml" />
+    <Content Include="Areas\Site\Views\Shared\_alertMessages.cshtml" />
+    <Content Include="Areas\Site\Views\Home\SendEmail.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Admins\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Lessions\Create.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Lessions\Delete.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Lessions\Details.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Lessions\Edit.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Lessions\Index.cshtml" />
+    <Content Include="Areas\Site\Views\Home\JoinACourse.cshtml" />
+    <Content Include="Areas\Site\Views\Home\PayCourse.cshtml" />
+    <Content Include="Areas\Site\Views\Home\Lession.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -494,68 +433,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009301518556_update-Setup4.resx">
-      <DependentUpon>202009301518556_update-Setup4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301540242_update-Setup4_addStudent.resx">
-      <DependentUpon>202009301540242_update-Setup4_addStudent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301541553_update-Setup4_addStudent1.resx">
-      <DependentUpon>202009301541553_update-Setup4_addStudent1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301616565_update-Setup4_addStudent2.resx">
-      <DependentUpon>202009301616565_update-Setup4_addStudent2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301628359_update-Setup4_addStudent3.resx">
-      <DependentUpon>202009301628359_update-Setup4_addStudent3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301639007_update-Setup4_addStudent4.resx">
-      <DependentUpon>202009301639007_update-Setup4_addStudent4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301640128_update-Setup4_addStudent5.resx">
-      <DependentUpon>202009301640128_update-Setup4_addStudent5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301727141_update-Setup4_addCourse1.resx">
-      <DependentUpon>202009301727141_update-Setup4_addCourse1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301728398_update-Setup4_addCourse2.resx">
-      <DependentUpon>202009301728398_update-Setup4_addCourse2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301736220_update-Setup4_addCourse3.resx">
-      <DependentUpon>202009301736220_update-Setup4_addCourse3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301740237_update-Setup4_addCourse4.resx">
-      <DependentUpon>202009301740237_update-Setup4_addCourse4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301747293_update-Setup4_addCourse5.resx">
-      <DependentUpon>202009301747293_update-Setup4_addCourse5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010051432024_update-file105.resx">
-      <DependentUpon>202010051432024_update-file105.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010061647225_update-addRoles.resx">
-      <DependentUpon>202010061647225_update-addRoles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010071021092_update-addimage1.resx">
-      <DependentUpon>202010071021092_update-addimage1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010072213492_update-roles_Sallam.resx">
-      <DependentUpon>202010072213492_update-roles_Sallam.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010072323519_update-roles_Sallam_2.resx">
-      <DependentUpon>202010072323519_update-roles_Sallam_2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010082000338_update-addPages.resx">
-      <DependentUpon>202010082000338_update-addPages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010082008548_update-addPages2.resx">
-      <DependentUpon>202010082008548_update-addPages2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010082117382_update-addMessages.resx">
-      <DependentUpon>202010082117382_update-addMessages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010082129403_update-addMessages2.resx">
-      <DependentUpon>202010082129403_update-addMessages2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010112339569_update-lession3.resx">
+      <DependentUpon>202010112339569_update-lession3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

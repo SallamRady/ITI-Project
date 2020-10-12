@@ -1,0 +1,86 @@
+﻿@using ITIProject.Models
+@model RegisterViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head File -->
+@Html.Partial("~/Areas/Site/Views/Shared/_head.cshtml")
+<!-- # Head File -->
+<body class="index-page sidebar-collapse">
+    <!-- main Content-->
+    @Html.Partial("~/Areas/Site/Views/Shared/_alertMessages.cshtml")
+    <div class="page-header" style="background-image: url('/Areas/Site/Content/assets/img/login-image.jpg');">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 ml-auto mr-auto">
+                    <div class="card card-register">
+                        <h3 class="title mx-auto">Welcome</h3>
+                        @using (Html.BeginForm("Register", "Account",new { area = ""}, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <h4>  Create a new account.</h4>
+                            <hr/>
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control",@placeholder=" User Name " })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = " Email " })
+                                </div>
+                            </div>
+                            <input type="hidden" name="Roles" value="Students"/>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                                <div class="col-md-12">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = " Password " })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+                                <div class="col-md-12">
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = " Confirm Password " })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" class="btn btn-default" value="Register" />
+                                </div>
+                            </div>
+                        }
+                        <div class="forgot">
+                            <a href="/Site/Home/Login" class="btn btn-link btn-danger">I already Have Account!!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer register-footer text-center">
+            <h6>
+                ©
+                <script>
+          document.write(new Date().getFullYear())
+                </script>, made with <i class="fa fa-heart heart"></i> by Sallam - Magdy
+            </h6>
+        </div>
+    </div>
+    <!--# main Content-->
+    <!-- Core Scripts  File-->
+    @Html.Partial("~/Areas/Site/Views/Shared/_CoreScript.cshtml")
+    <script>
+        $(".message").fadeOut(5500);
+    </script>
+</body>
+
+</html>

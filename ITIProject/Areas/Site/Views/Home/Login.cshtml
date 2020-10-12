@@ -11,6 +11,7 @@
 <!-- # Head File -->
 <body class="index-page sidebar-collapse">
     <!-- main Content-->
+    @Html.Partial("~/Areas/Site/Views/Shared/_alertMessages.cshtml")
     <div class="page-header" style="background-image: url('/Areas/Site/Content/assets/img/login-image.jpg');">
         <div class="filter"></div>
         <div class="container">
@@ -48,6 +49,9 @@
     <!--# main Content-->
     <!-- Core Scripts  File-->
     @Html.Partial("~/Areas/Site/Views/Shared/_CoreScript.cshtml")
+    <script>
+        $(".message").fadeOut(5500);
+    </script>
 </body>
 
 </html>

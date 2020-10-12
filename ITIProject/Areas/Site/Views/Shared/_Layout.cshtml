@@ -25,7 +25,7 @@
                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                              @foreach (var dept in ViewBag.Departments)
                              {
-                                 <a class="dropdown-item" href="#">@dept.Name</a>
+                                 <a class="dropdown-item" href="/Site/Home/Search?SearchKeyWord=@dept.Name&derp=Department">@dept.Name</a>
                              }
 
                          </div>
@@ -37,10 +37,10 @@
                              @Html.AntiForgeryToken()
 
                              <li class="nav-item">
-                                 @Html.ActionLink(User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+                                 <a href="/Site/Home/Profile" class="nav-link">Hello @User.Identity.GetUserName()</a>
                              </li>
                              <li class="nav-item">
-                                 <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link ">Log Out</a>
+                                 <a href="/Site/Home/LogOut" class="nav-link ">Log Out</a>
                              </li>
                          }
                      }
@@ -60,6 +60,10 @@
          </div>
      </nav>
      <div class="main">
+         <!--Alert Messages-->
+         @Html.Partial("~/Areas/Site/Views/Shared/_alertMessages.cshtml")
+         <!--#Alert Messages-->
+
          @RenderBody()
          <!-- Start Footer -->
          @Html.Partial("~/Areas/Site/Views/Shared/_footer.cshtml")
@@ -68,6 +72,8 @@
 
      <!-- Core Scripts  File-->
      @Html.Partial("~/Areas/Site/Views/Shared/_CoreScript.cshtml")
-
+     <script>
+        $(".message").fadeOut(5500);
+     </script>
  </body>
 </html>

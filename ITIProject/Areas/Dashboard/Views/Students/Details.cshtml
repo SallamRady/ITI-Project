@@ -8,68 +8,75 @@
 
 <div>
     <hr />
-    <div class="dl-horizontal">
+    <div class="dl-horizontal container">
         <div class="row">
-            <div class="col-md-3">
-                    @Html.DisplayNameFor(model => model.Department.Name)  
-            </div>
-            <div class="col-md-9">
-                    @Html.DisplayFor(model => model.Department.Name)
-            </div>
-        </div>
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Department.Name)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.Department.Name)
+                    </div>
+                </div>
 
-        <div class="row">
-            <div class="col-md-3">
-               @Html.DisplayNameFor(model => model.Professor.Name)
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.Professor.Name)
-            </div>
-        </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Professor.Name)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.Professor.Name)
+                    </div>
+                </div>
 
 
-        <div class="row">
-            <div class="col-md-3">
-                @Html.DisplayNameFor(model => model.Name)
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.Name)
-            </div>
-        </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.Name)
+                    </div>
+                </div>
 
-        <div class="row">
-            <div class="col-md-3">
-                @Html.DisplayNameFor(model => model.Email)
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.Email)
-            </div>
-        </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Email)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.Email)
+                    </div>
+                </div>
 
-        <div class="row">
-            <div class="col-md-3">
-                @Html.DisplayNameFor(model => model.City)
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.City)
-            </div>
-        </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.DisplayNameFor(model => model.City)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.City)
+                    </div>
+                </div>
 
-        <div class="row">
-            <div class="col-md-3">
-                @Html.DisplayNameFor(model => model.Level)
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.Level)
-            </div>
-        </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Level)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.Level)
+                    </div>
+                </div>
 
-        <div class="row">
-            <div class="col-md-3">
-               @Html.DisplayNameFor(model => model.BirthYear)
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.DisplayNameFor(model => model.BirthYear)
+                    </div>
+                    <div class="col-md-9 ">
+                        @Html.DisplayFor(model => model.BirthYear)
+                    </div>
+                </div>
             </div>
-            <div class="col-md-9 ">
-               @Html.DisplayFor(model => model.BirthYear)
+            <div class="col-ms-3">
+                <img src="@Model.Image" class="img-responsive" style="max-width: 150px;max-height: 150px;border-radius: 50%;" />
             </div>
         </div>
     </div>

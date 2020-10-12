@@ -11,6 +11,9 @@ namespace ITIProject.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public string Image { get; set; }
+        public string Role { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -35,6 +38,7 @@ namespace ITIProject.Models
         public DbSet<Students_Cources> Students_Cources { get; set; }
         public DbSet<Page> Pages { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Lession> Lessions { get; set; }
 
         public static ApplicationDbContext Create()
         {

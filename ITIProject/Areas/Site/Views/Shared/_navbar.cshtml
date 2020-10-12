@@ -24,7 +24,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         @foreach (var dept in ViewBag.Departments)
                         {
-                            <a class="dropdown-item" href="#">@dept.Name</a>
+                            <a class="dropdown-item" href="/Site/Home/Search?SearchKeyWord=@dept.Name&derp=Department">@dept.Name</a>
                         }
                         
                     </div>
@@ -35,10 +35,10 @@
                     {
                         @Html.AntiForgeryToken()
                         <li class="nav-item">
-                            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+                            <a href="/Site/Home/Profile" class="nav-link">Hello @User.Identity.GetUserName()</a>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Log off</a>
+                            <a href="/Site/Home/LogOut" class="nav-link ">Log Out</a>
                         </li>
                     }
                 }

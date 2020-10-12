@@ -1,0 +1,77 @@
+﻿@model List<ITIProject.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Dashboard/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card table-responsive">
+    <div class="header">
+        <div style="display:inline-block">
+            <h2>Admins Management</h2>
+            <small>you can not edit-delete-update any columns except header/footer if you don't super Admin.</small>
+        </div>
+        <a class="btn btn-primary" href="#" style="float:right">Create New Role</a>
+    </div>
+    <div class="body-content" style="margin:3px">
+        <table id="mainTable" class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model.Count() == 0)
+                {
+                    <tr>
+                        <th colspan="2" style="color:red">There are no rows</th>
+                    </tr>
+                }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.UserName
+                        </td>
+                        <td>
+                            <a  class="btn btn-primary"
+                               href="#"
+                               title="Edit" disabled
+                               style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                <span class="material-icons">edit</span>
+                            </a> |
+                            <a class="btn btn-info"
+                               href="#"
+                               title="Details"
+                               style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                <span class="material-icons">visibility</span>
+                            </a> |
+                            <a class="btn btn-danger"
+                               href="#"
+                               title="Delete"
+                               style="cursor:pointer;max-width: 50px;max-height: 35px;text-align: center;">
+                                <span class="material-icons">delete</span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+

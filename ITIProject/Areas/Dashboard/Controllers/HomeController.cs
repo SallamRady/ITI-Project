@@ -6,10 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Web.Security;
 
 namespace ITIProject.Areas.Dashboard.Controllers
 {
+   // [AuthorizeToDashboard]
     [Authorize(Roles ="Admins,Professors,Managers")]
     public class HomeController : Controller
     {
@@ -37,6 +38,13 @@ namespace ITIProject.Areas.Dashboard.Controllers
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult Logout(string returnUrl)
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Home", new { area = "Dashboard" });
         }
     }
 }

@@ -10,77 +10,81 @@
 <div>
     <hr/>
     <div class="dl-horizontal row">
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.Department.Name)
-        </div>
+        <div class="col-md-7">
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Department.Name)
+            </div>
 
-        <div class="col-md-9">
-            @Html.DisplayFor(model => model.Department.Name)
-        </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Department.Name)
+            </div>
 
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.Professor.Name)
-        </div>
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Professor.Name)
+            </div>
 
-        <div class="col-md-9">
-            @Html.DisplayFor(model => model.Professor.Name)
-        </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Professor.Name)
+            </div>
 
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.Name)
-        </div>
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Name)
+            </div>
 
-        <div class="col-md-9">
-            @Html.DisplayFor(model => model.Name)
-        </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Name)
+            </div>
 
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.Free)
-        </div>
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Free)
+            </div>
 
-        <div class="col-md-9">
-            @if(Model.Free == false)
-            {
-                <text>Yes</text>
-            }
-            else
-            {
-                <text>No</text>
-            }
-        </div>
+            <div class="col-md-9">
+                @if (Model.Free == false)
+                {
+                    <text>Yes</text>
+                }
+                else
+                {
+                    <text>No</text>
+                }
+            </div>
 
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.Cost)
-        </div>
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Cost)
+            </div>
 
-        <div class="col-md-9">
-            @Html.DisplayFor(model => model.Cost)
-        </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Cost)
+            </div>
 
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.Hours)
-        </div>
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Hours)
+            </div>
 
-        <div class="col-md-9">
-            @Html.DisplayFor(model => model.Hours)
-        </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Hours)
+            </div>
 
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.Degree)
-        </div>
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Degree)
+            </div>
 
-        <div class="col-md-9">
-            @Html.DisplayFor(model => model.Degree)
-        </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Degree)
+            </div>
 
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.MinDegree)
-        </div>
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.MinDegree)
+            </div>
 
-        <div class="col-md-9">
-            @Html.DisplayFor(model => model.MinDegree)
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.MinDegree)
+            </div>
         </div>
-
+        <div class="col-ms-3">
+            <img src="@Model.Image" class="img-responsive" style="max-width: 150px;max-height: 150px;border-radius: 50%;" />
+        </div>
     </div>
 </div>
 <br/>

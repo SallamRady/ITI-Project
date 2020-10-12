@@ -11,52 +11,56 @@
     <h4>Professor</h4>
     <hr />
     <div class="dl-horizontal row">
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.Department.Name)
-        </div>
+        <div class="col-md-7">
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Department.Name)
+            </div>
 
-        <div class="col-md-9">
-            @Html.DisplayFor(model => model.Department.Name)
-        </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Department.Name)
+            </div>
 
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.Name)
-        </div>
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Name)
+            </div>
 
-        <div class="col-md-9">
-            @Html.DisplayFor(model => model.Name)
-        </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Name)
+            </div>
 
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.Email)
-        </div>
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Email)
+            </div>
 
-        <div class="col-md-9">
-            @Html.DisplayFor(model => model.Email)
-        </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Email)
+            </div>
 
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.City)
-        </div>
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.City)
+            </div>
 
-        <div class="col-md-9">
-            @Html.DisplayFor(model => model.City)
-        </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.City)
+            </div>
 
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.Salary)
-        </div>
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Salary)
+            </div>
 
-        <div class="col-md-9">
-            @Html.DisplayFor(model => model.Salary)
-        </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Salary)
+            </div>
 
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.Roles)
+            <div class="col-md-3">
+                @Html.DisplayNameFor(model => model.Roles)
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Roles)
+            </div>
         </div>
-
-        <div class="col-md-9">
-            @Html.DisplayFor(model => model.Roles)
+        <div class="col-ms-3">
+            <img src="@Model.Image" class="img-responsive" style="max-width: 150px;max-height: 150px;border-radius: 50%;" />
         </div>
 
     </div>

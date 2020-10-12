@@ -29,6 +29,9 @@ namespace ITIProject.Models.DBFiles
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        //Image..
+        public string Image { get; set; }
+
         // City.
         [Required]
         [Display(Name = "Professor City")]

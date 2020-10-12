@@ -16,21 +16,8 @@
                     <ul class="dropdown-menu pull-right">
                         <li><a href="#"><i class="material-icons">person</i>Profile</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#"><i class="material-icons">group</i>Followers</a></li>
-                        <li><a href="#"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                        <li><a href="#"><i class="material-icons">favorite</i>Likes</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#"><i class="material-icons">input</i>Sign Out</a>
-                            @using (Html.BeginForm("LogOff", "../Account", FormMethod.Post))
-                            {
-                                @Html.AntiForgeryToken()
-                                <div class="btn btn-default" style="color:black">
-                                    <span class="material-icons">input</span>
-                                    <input type="hidden" name="dashboard" value="Dashboard" />
-                                    <input type="submit" value="Logout" class="item" />
-                                </div>
-                            }
-                        </li>
+                        <li><a href="/Dashboard/Home/Logout"><i class="material-icons">input</i>Sign Out</a></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -57,8 +44,8 @@
                     </a>
                 </li>
                 <!--Admins Link-->
-                <li >
-                    <a href="/Dashboard/Roles/Index">
+                <li class="@if(Request.Url.AbsoluteUri.Contains("Admins")){<text>active</text>}">
+                    <a href="/Dashboard/Admins/Index">
                         <i class="material-icons">admin_panel_settings</i>
                         <span>Admins</span>
                     </a>
@@ -77,6 +64,13 @@
                         <span>Courses</span>
                     </a>
                 </li>
+                <!--Lessions Link-->
+                <li class="@if(Request.Url.AbsoluteUri.Contains("Lessions")){<text>active</text>}">
+                    <a href="/Dashboard/Lessions/Index">
+                        <i class="material-icons">library_books</i>
+                        <span>Lessions</span>
+                    </a>
+                </li>
                 <!--professors Link-->
                 <li class="@if(Request.Url.AbsoluteUri.Contains("Professors")){<text>active</text>}">
                     <a href="/Dashboard/Professors/Index">
@@ -91,7 +85,7 @@
                         <span>Students</span>
                     </a>
                 </li>
-                <!--Students Link-->
+                <!--Pages Link-->
                 <li  class="@if(Request.Url.AbsoluteUri.Contains("Pages")){<text>active</text>}">
                     <a href="/Dashboard/Pages/Index">
                         <i class="material-icons">pages</i>
@@ -105,6 +99,7 @@
                         <span>Messages</span>
                     </a>
                 </li>
+                
  
             </ul>
         </div>

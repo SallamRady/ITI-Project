@@ -1,0 +1,50 @@
+﻿@model ITIProject.Models.DBFiles.Cource
+@{
+    ViewBag.Title = "JoinACourse";
+    Layout = "~/Areas/Site/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <h2>Course Name : @Model.Name</h2>
+            <p>Course Professor : @Model.Professor.Name </p>
+            <p>Course Department : @Model.Department.Name </p>
+            <p>Course Degree : @Model.Degree </p>
+            <p>Course Min Degree : @Model.MinDegree </p>
+            
+        </div>
+        <div class="col-md-5">
+            <img class="img-responsive" src="@Model.Image" style="max-width: 500px;max-height: 500px;" />
+        </div>
+    </div>
+    <div class="row">
+        @if (Model.Free == false)
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Lession Name</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var lession in Model.Course_Lessions)
+                    {
+                        <tr>
+                            <th scope="col">@lession.Title</th>
+                            <th scope="col">
+                                <a href="/Site/Home/Lession/@lession.ID" class="btn btn-success" style="float: right;">read and learn</a>
+                            </th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <!--***********************************************************-->
+            <a href="/Site/Home/PayCourse/@Model.ID" class="btn btn-info" style="float: right;">Pay and Join</a>
+            <!--***********************************************************-->
+        }
+    </div>
+</div>

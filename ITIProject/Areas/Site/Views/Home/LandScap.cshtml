@@ -19,6 +19,9 @@
 
     <!-- main Content-->
     <div class="main">
+        <!--Alert Messages-->
+        @Html.Partial("~/Areas/Site/Views/Shared/_alertMessages.cshtml")
+        <!--#Alert Messages-->
         <!--Start Notes-->
         <div class="section text-center">
             <div class="container">
@@ -28,7 +31,7 @@
                         <h5 class="description">We ITI Educational Academy are honored to help you improve your skills and learn the skills required for the labor market by teaching you through the courses offered by our best engineers through courses, whether free or paid.
                             Improve yourself</h5>
                         <br>
-                        <a href="#" class="btn btn-danger btn-round">See Details</a>
+                        <a href="/Site/Home/Index" class="btn btn-danger btn-round">See Details</a>
                     </div>
                 </div>
                 <br>
@@ -42,7 +45,7 @@
                             <div class="description">
                                 <h4 class="info-title">Web Development</h4>
                                 <p class="description">Spend your time generating new ideas. And learn implementation skills</p>
-                                <a href="#" class="btn btn-link btn-danger">See more</a>
+                                <a href="/Site/Home/Search?SearchKeyWord=WebDevelopment&derp=Department" class="btn btn-link btn-danger">See more</a>
                             </div>
                         </div>
                     </div>
@@ -54,7 +57,7 @@
                             <div class="description">
                                 <h4 class="info-title">Android Development</h4>
                                 <p>Learn Android Development Skills you will know evry thing you want to Know</p>
-                                <a href="#" class="btn btn-link btn-danger">See more</a>
+                                <a href="/Site/Home/Search?SearchKeyWord=AndroidDevelopment&derp=Department" class="btn btn-link btn-danger">See more</a>
                             </div>
                         </div>
                     </div>
@@ -66,7 +69,7 @@
                             <div class="description">
                                 <h4 class="info-title">Managment</h4>
                                 <p>Learn about management and accounting and everything you need to know in this regard</p>
-                                <a href="#" class="btn btn-link btn-danger">See more</a>
+                                <a href="/Site/Home/Search?SearchKeyWord=Managment&derp=Department" class="btn btn-link btn-danger">See more</a>
                             </div>
                         </div>
                     </div>
@@ -78,7 +81,7 @@
                             <div class="description">
                                 <h4 class="info-title">Delightful design</h4>
                                 <p>Look for exhilarating ideas and design them yourself and you will find everything you want to learn with us.</p>
-                                <a href="#" class="btn btn-link btn-danger">See more</a>
+                                <a href="/Site/Home/Search?SearchKeyWord=Delightful&derp=Department" class="btn btn-link btn-danger">See more</a>
                             </div>
                         </div>
                     </div>
@@ -190,6 +193,9 @@
 
     <!-- Core Scripts  File-->
     @Html.Partial("~/Areas/Site/Views/Shared/_CoreScript.cshtml")
+    <script>
+        $(".message").fadeOut(5500);
+    </script>
  </body>
 
 </html>

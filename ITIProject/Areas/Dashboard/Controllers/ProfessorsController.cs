@@ -11,14 +11,17 @@ using ITIProject.Models;
 using ITIProject.Models.DBFiles;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.IO;
 
 namespace ITIProject.Areas.Dashboard.Controllers
 {
+    [Authorize(Roles = "Admins")]
     public class ProfessorsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Dashboard/Professors
+        [Authorize(Roles = "Admins,Professors,Managers")]
         public ActionResult Index(string searchBy, string SearchKeyWord, int? pageNumber, int? pageSize)
         {
             if (searchBy == "City")
@@ -44,6 +47,7 @@ namespace ITIProject.Areas.Dashboard.Controllers
         }
 
         // GET: Dashboard/Professors/Details/5
+        [Authorize(Roles = "Admins,Professors,Managers")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -70,8 +74,22 @@ namespace ITIProject.Areas.Dashboard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Email,City,Salary,Roles,Professor_Department_ID")] Professor professor)
+        public ActionResult Create([Bind(Include = "ID,Name,Email,City,Image,Salary,Roles,Professor_Department_ID")] Professor professor,HttpPostedFileBase ImageFile)
         {
+            if (ImageFile != null)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                fileName += DateTime.Now.ToString("yymmssfff");
+                string extention = Path.GetExtension(ImageFile.FileName);
+                fileName = fileName + extention;
+                professor.Image = "/Content/Images/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+                ImageFile.SaveAs(fileName);
+            }
+            else
+            {
+                professor.Image = "/Content/Images/default.png";
+            }
             if (ModelState.IsValid)
             {
                 db.Professors.Add(professor);
@@ -118,10 +136,25 @@ namespace ITIProject.Areas.Dashboard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Email,City,Salary,Roles,Professor_Department_ID")] Professor professor)
+        public ActionResult Edit([Bind(Include = "ID,Name,Email,City,Image,Salary,Roles,Professor_Department_ID")] Professor professor,HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {
+
+                if (ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                    fileName += DateTime.Now.ToString("yymmssfff");
+                    string extention = Path.GetExtension(ImageFile.FileName);
+                    fileName = fileName + extention;
+                    professor.Image = "/Content/Images/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+                    ImageFile.SaveAs(fileName);
+                }
+                else
+                {
+                    professor.Image = Request.Form["Image"];
+                }
                 db.Entry(professor).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

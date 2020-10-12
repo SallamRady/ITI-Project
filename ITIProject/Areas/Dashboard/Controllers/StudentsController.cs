@@ -81,13 +81,13 @@ namespace ITIProject.Areas.Dashboard.Controllers
                 fileName += DateTime.Now.ToString("yymmssfff");
                 string extention = Path.GetExtension(ImageFile.FileName);
                 fileName = fileName + extention;
-                student.Image = "~/Content/Images/" + fileName;
+                student.Image = "/Content/Images/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
                 ImageFile.SaveAs(fileName);
             }
             else
             {
-                student.Image = "~/Content/Images/default.png";
+                student.Image = "/Content/Images/default.png";
             }
 
             if (ModelState.IsValid)
@@ -139,6 +139,8 @@ namespace ITIProject.Areas.Dashboard.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,Email,City,Level,Image,BirthYear,Student_Department_ID,Student_Professor_supervisior_ID")] Student student,HttpPostedFileBase ImageFile)
         {
+           
+
             if (ModelState.IsValid)
             {
                 if (ImageFile != null)
@@ -147,12 +149,13 @@ namespace ITIProject.Areas.Dashboard.Controllers
                     fileName += DateTime.Now.ToString("yymmssfff");
                     string extention = Path.GetExtension(ImageFile.FileName);
                     fileName = fileName + extention;
-                    student.Image = "~/Content/Images/" + fileName;
+                    student.Image = "/Content/Images/" + fileName;
                     fileName = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
                     ImageFile.SaveAs(fileName);
-                }else
+                }
+                else
                 {
-                    student.Image = student.Image;
+                    student.Image = Request.Form["Image"];
                 }
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();

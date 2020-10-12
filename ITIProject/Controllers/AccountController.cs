@@ -87,6 +87,7 @@ namespace ITIProject.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    TempData["goodMsg"] = "You are loggined :) ";
                     return RedirectToLocal(returnUrl,dashboard);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -95,6 +96,7 @@ namespace ITIProject.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
+                    TempData["errorMsg"] = "Invalid login attempt.";
                     if (Request.Url.AbsoluteUri.Contains("Dashboard") || (!string.IsNullOrEmpty(dashboard) && dashboard.Contains("Dashboard")))
                     {
                         return RedirectToAction("Login", "Dashboard/Home",model);
@@ -165,6 +167,7 @@ namespace ITIProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
@@ -179,14 +182,16 @@ namespace ITIProject.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     await this.UserManager.AddToRoleAsync(user.Id, model.Roles);
-                    return RedirectToAction("Index", "Home");
+                    TempData["goodMsg"] = "You are loggined successfully :) ";
+                    return RedirectToAction("Index", "Home",new { area ="Site"});
                 }
                 ViewBag.Roles = new SelectList(db.Roles.ToList(), "Name", "Name");
                 AddErrors(result);
             }
-
             // If we got this far, something failed, redisplay form
-            return View(model);
+            TempData["errorMsg"] = "There is an error in your Data";
+            return RedirectToAction("Register", "Site/Home",model);
+            //return RedirectToRoute("User_Register");
         }
 
         //
@@ -409,6 +414,7 @@ namespace ITIProject.Controllers
         public ActionResult LogOff(string dashboard)
         {
             FormsAuthentication.SignOut();
+            Session.Clear();
            // AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             if(!string.IsNullOrEmpty(dashboard) && dashboard.Contains("Dashboard"))
             {
@@ -416,6 +422,8 @@ namespace ITIProject.Controllers
             }
             return RedirectToAction("Index", "Home", new { area = "Site" });
         }
+
+
 
         //
         // GET: /Account/ExternalLoginFailure
@@ -467,12 +475,13 @@ namespace ITIProject.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl,string dashboard = "test")
         {
+            TempData["goodMsg"] = "You are loggined Successfully :) ";
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
             }
             var DashboardKeyWord = "Dashboard";
-
+            
             if (Request.Url.AbsoluteUri.Contains(DashboardKeyWord) || (!string.IsNullOrEmpty(dashboard) && dashboard.Contains(DashboardKeyWord)))
             {
                 return RedirectToAction("Index", "Dashboard/Home");
